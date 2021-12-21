@@ -8,7 +8,7 @@ A really cool way to do static analysis of your source code with SonarQube
 
 ## Running
 ```bash
-docker compose up
+docker-compose up
 ```
 
 ## Create Sonar Properties
