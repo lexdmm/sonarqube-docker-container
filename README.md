@@ -6,6 +6,18 @@ A really cool way to do static analysis of your source code with SonarQube
 [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Sonar](https://img.shields.io/badge/SonarLint-CB2029?style=for-the-badge&logo=sonarlint&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
 
+## Docker Host Requirements
+Because SonarQube uses an embedded Elasticsearch, make sure that your Docker host configuration complies with the [Elasticsearch production mode requirements](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode) and [File Descriptors configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-descriptors.html).
+
+For example, on Linux, you can set the recommended values for the current session by running the following commands as root on the host:
+
+```bash
+sysctl -w vm.max_map_count=524288
+sysctl -w fs.file-max=131072
+ulimit -n 131072
+ulimit -u 8192
+```
+
 ## Running
 ```bash
 docker-compose up
