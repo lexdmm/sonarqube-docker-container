@@ -35,6 +35,9 @@ docker run \
     -v "${YOUR_REPO}:/usr/src" \
     sonarsource/sonar-scanner-cli
 ```
+When you configure sonarqube, note that your project token to run with sonar-scanner. See the example settings in the image below:
+![sonarexample](https://user-images.githubusercontent.com/66276069/152720337-1199634b-6ddb-4ed6-8858-abe26b32a310.png)
+
 
 ## SonarLint
 Use SonarLint to check the consistency of your code even before deploying with sonarqube validation. This helps you verify the source before sonar analysis.
