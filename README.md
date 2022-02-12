@@ -29,11 +29,12 @@ Create a sonar-project.properties into your project. See the configurations here
 ## Running SonarScanner from the Docker image
 ```bash
 docker run \
-    --rm \
-    -e SONAR_HOST_URL="http://${SONARQUBE_URL}" \
-    -e SONAR_LOGIN="myAuthenticationToken" \
-    -v "${YOUR_REPO}:/usr/src" \
-    sonarsource/sonar-scanner-cli
+	--network=host \
+	--rm \
+	-e SONAR_HOST_URL="http://${SONARQUBE_URL}" \
+	-e SONAR_LOGIN="${SONARQUBE_TOKEN}" \
+	-v "$(pwd):/usr/src" \
+	sonarsource/sonar-scanner-cli -Dsonar.projectKey=${YOUR_PROJECT_KEY} -Dsonar.login=${SONARQUBE_LOGIN} -Dsonar.password=${SONARQUBE_PASSWORD}
 ```
 When you configure sonarqube, note that your project token to run with sonar-scanner. See the example settings in the image below:
 ![sonarexample](https://user-images.githubusercontent.com/66276069/152720337-1199634b-6ddb-4ed6-8858-abe26b32a310.png)
